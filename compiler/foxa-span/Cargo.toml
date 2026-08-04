@@ -1,0 +1,17 @@
+[package]
+name = "foxa-span"
+description = "Source locations, file IDs, and byte spans for the Foxa compiler"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+
+[dependencies]
+serde = { workspace = true, optional = true }
+
+[features]
+default = []
+serde = ["dep:serde"]
+
+[dev-dependencies]

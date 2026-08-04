@@ -1,0 +1,7 @@
+fn main() {
+    print("Hello, Foxa!");
+}
+
+fn add(a: Int, b: Int) -> Int {
+    a + b
+}

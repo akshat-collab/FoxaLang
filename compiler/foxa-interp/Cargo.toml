@@ -1,0 +1,20 @@
+[package]
+name = "foxa-interp"
+description = "Tree-walk interpreter backend for Foxa"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+
+[dependencies]
+foxa-span = { workspace = true }
+foxa-ast = { workspace = true }
+foxa-resolve = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+foxa-diagnostics = { workspace = true }
+foxa-lexer = { workspace = true }
+foxa-parser = { workspace = true }
+foxa-types = { workspace = true }

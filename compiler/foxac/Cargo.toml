@@ -1,0 +1,28 @@
+[package]
+name = "foxac"
+description = "Foxa compiler driver and CLI (foxa)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+
+[[bin]]
+name = "foxa"
+path = "src/main.rs"
+
+[dependencies]
+foxa-span = { workspace = true }
+foxa-diagnostics = { workspace = true }
+foxa-lexer = { workspace = true }
+foxa-ast = { workspace = true }
+foxa-parser = { workspace = true }
+foxa-resolve = { workspace = true }
+foxa-types = { workspace = true }
+foxa-interp = { workspace = true }
+foxa-mir = { workspace = true }
+foxa-codegen = { workspace = true }
+clap = { workspace = true }
+anyhow = { workspace = true }
+
+[dev-dependencies]

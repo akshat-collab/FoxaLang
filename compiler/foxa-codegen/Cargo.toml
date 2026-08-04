@@ -1,0 +1,27 @@
+[package]
+name = "foxa-codegen"
+description = "Cranelift JIT/codegen backend for Foxa MIR"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+
+[dependencies]
+foxa-mir = { workspace = true }
+cranelift-codegen = "0.125"
+cranelift-frontend = "0.125"
+cranelift-module = "0.125"
+cranelift-jit = "0.125"
+cranelift-native = "0.125"
+target-lexicon = "0.13"
+thiserror = { workspace = true }
+
+[dev-dependencies]
+foxa-span = { workspace = true }
+foxa-ast = { workspace = true }
+foxa-diagnostics = { workspace = true }
+foxa-lexer = { workspace = true }
+foxa-parser = { workspace = true }
+foxa-resolve = { workspace = true }
+foxa-types = { workspace = true }

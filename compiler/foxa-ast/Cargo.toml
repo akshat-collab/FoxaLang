@@ -1,0 +1,13 @@
+[package]
+name = "foxa-ast"
+description = "Abstract syntax tree definitions for Foxa"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+
+[dependencies]
+foxa-span = { workspace = true }
+
+[dev-dependencies]

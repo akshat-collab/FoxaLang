@@ -1,0 +1,5 @@
+# Foxa core prelude
+
+Option, Result, Vec, and String are language/runtime builtins.
+
+See README.md in this directory for the API surface.

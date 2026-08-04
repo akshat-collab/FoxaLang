@@ -1,0 +1,18 @@
+[package]
+name = "foxa-types"
+description = "Type checker and type representations for Foxa"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+
+[dependencies]
+foxa-span = { workspace = true }
+foxa-diagnostics = { workspace = true }
+foxa-ast = { workspace = true }
+foxa-resolve = { workspace = true }
+
+[dev-dependencies]
+foxa-lexer = { workspace = true }
+foxa-parser = { workspace = true }

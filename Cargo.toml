@@ -1,0 +1,51 @@
+[workspace]
+resolver = "2"
+members = [
+    "compiler/foxa-span",
+    "compiler/foxa-diagnostics",
+    "compiler/foxa-lexer",
+    "compiler/foxa-ast",
+    "compiler/foxa-parser",
+    "compiler/foxa-resolve",
+    "compiler/foxa-types",
+    "compiler/foxa-interp",
+    "compiler/foxa-mir",
+    "compiler/foxa-codegen",
+    "compiler/foxac",
+    "tools/foxa-pkg",
+]
+default-members = ["compiler/foxac"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/foxalang/foxa"
+rust-version = "1.75"
+authors = ["Foxa Contributors"]
+
+[workspace.dependencies]
+foxa-span = { path = "compiler/foxa-span" }
+foxa-diagnostics = { path = "compiler/foxa-diagnostics" }
+foxa-lexer = { path = "compiler/foxa-lexer" }
+foxa-ast = { path = "compiler/foxa-ast" }
+foxa-parser = { path = "compiler/foxa-parser" }
+foxa-resolve = { path = "compiler/foxa-resolve" }
+foxa-types = { path = "compiler/foxa-types" }
+foxa-interp = { path = "compiler/foxa-interp" }
+foxa-mir = { path = "compiler/foxa-mir" }
+foxa-codegen = { path = "compiler/foxa-codegen" }
+
+thiserror = "2"
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
+
+[profile.dev]
+debug = true
