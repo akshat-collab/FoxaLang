@@ -33,11 +33,11 @@ export function Home() {
       <section className="home-hero" aria-label="foxaLang brand">
         <div className="home-logo-wrap home-anim home-anim-1">
           <img
-            src="/foxalang-logo.jpg"
+            src="/foxalang-logo.png"
             alt="foxaLang — fox circuit logo"
             className="home-logo"
-            width={1024}
-            height={558}
+            width={685}
+            height={511}
           />
           <div className="home-logo-glow" aria-hidden />
         </div>

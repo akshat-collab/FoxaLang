@@ -17,7 +17,7 @@ export function Layout() {
     <div className="app-shell">
       <header className="appbar">
         <NavLink to="/" className="brand" end>
-          <img src="/foxalang-logo.jpg" alt="" className="brand-logo" width={22} height={12} />
+          <img src="/foxalang-logo.png" alt="" className="brand-logo" width={22} height={22} />
           <span className="brand-name">
             foxa<span className="brand-lang">Lang</span>
           </span>

@@ -22,13 +22,13 @@
 }
 
 .brand-logo {
-  width: 28px;
-  height: 16px;
-  object-fit: cover;
-  object-position: center 35%;
-  border-radius: 2px;
-  border: 1px solid var(--border);
-  background: #12151a;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  object-position: center top;
+  border-radius: 0;
+  border: none;
+  background: transparent;
 }
 
 .brand-name {
