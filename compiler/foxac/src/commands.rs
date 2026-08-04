@@ -27,7 +27,13 @@ pub fn execute(cli: Cli) -> Result<()> {
             ret,
             file,
             body,
-        } => cmd_fn(&name, &params, ret.as_deref(), file.as_deref(), body.as_deref()),
+        } => cmd_fn(
+            &name,
+            &params,
+            ret.as_deref(),
+            file.as_deref(),
+            body.as_deref(),
+        ),
         Commands::Test => {
             println!("foxa test: test runner will be available in a later phase");
             Ok(())
@@ -232,8 +238,7 @@ fn cmd_fn(
     if target.exists() {
         let existing = fs::read_to_string(&target)
             .with_context(|| format!("failed to read {}", target.display()))?;
-        if existing.contains(&format!("fn {name}(")) || existing.contains(&format!("fn {name} ("))
-        {
+        if existing.contains(&format!("fn {name}(")) || existing.contains(&format!("fn {name} (")) {
             bail!("function `{name}` already exists in {}", target.display());
         }
         let mut next = existing;
@@ -253,9 +258,7 @@ fn cmd_fn(
         let contents = if name == "main" {
             stub
         } else {
-            format!(
-                "{stub}\nfn main() {{\n    // call `{name}` from here\n}}\n"
-            )
+            format!("{stub}\nfn main() {{\n    // call `{name}` from here\n}}\n")
         };
         fs::write(&target, contents)?;
         println!("Created {} with `fn {name}`", target.display());
@@ -470,10 +473,7 @@ mod tests {
         )
         .unwrap();
         let mut src = fs::read_to_string(&path).unwrap();
-        src = src.replace(
-            "// call `greet` from here",
-            "show(greet(\"Foxa\"));",
-        );
+        src = src.replace("// call `greet` from here", "show(greet(\"Foxa\"));");
         fs::write(&path, src).unwrap();
         cmd_show(&path).unwrap();
         let _ = fs::remove_dir_all(&dir);
