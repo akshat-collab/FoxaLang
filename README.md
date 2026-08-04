@@ -17,13 +17,19 @@ npm run dev
 
 ## Native toolchain
 
-> Status: **active development** — `foxa run` interprets full control flow,
-> structs/enums/match; `foxa jit` compiles Int functions via Cranelift;
-> `foxa-pkg` resolves `Foxa.toml` dependencies.
+> Status: **active development** — `foxa show` / `foxa run` interpret programs;
+> `foxa fn` scaffolds functions into `.foxa` files; `foxa jit` compiles Int
+> functions via Cranelift; `foxa-pkg` resolves `Foxa.toml` dependencies.
 
 ```bash
 # Build the toolchain
 cargo build -p foxac
+
+# Show program output (compile + run main)
+cargo run -p foxac -- show examples/hello.foxa
+
+# Scaffold a Foxa function into a .foxa file
+cargo run -p foxac -- fn greet --params "name: String" --ret String --file examples/greet.foxa
 
 # Check a source file (lex + parse + resolve + typecheck)
 cargo run -p foxac -- check examples/hello.foxa
@@ -43,9 +49,15 @@ cargo run -p foxa-pkg -- resolve --manifest Foxa.toml
 
 ```foxa
 fn main() {
-    print("Hello, Foxa!");
+    show("Hello, Foxa!");
+}
+
+fn add(a: Int, b: Int) -> Int {
+    a + b
 }
 ```
+
+Create functions with Foxa `fn` (CLI: `foxa fn ...`). Runnable files need `fn main()`.
 
 ## Design pillars
 

@@ -720,7 +720,7 @@ impl<'a> TypeChecker<'a> {
         let arg_tys: Vec<Ty> = args.iter().map(|a| self.check_expr(a)).collect();
 
         if let ExprKind::Path(name) = &callee.kind {
-            if name == "print" && arg_tys.len() == 1 {
+            if (name == "print" || name == "show") && arg_tys.len() == 1 {
                 let _ = self.check_expr(callee);
                 return Ty::Unit;
             }

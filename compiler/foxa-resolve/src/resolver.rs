@@ -127,12 +127,12 @@ impl<'a> Resolver<'a> {
     fn install_builtins(&mut self) {
         let span = Span::at(foxa_span::FileId::from_raw(0), 0);
         for name in [
-            "print", "assert", "Int", "Float", "Bool", "String", "Char", "Unit", "Vec", "Option",
-            "Result",
+            "print", "show", "assert", "Int", "Float", "Bool", "String", "Char", "Unit", "Vec",
+            "Option", "Result",
         ] {
             let id = self.alloc_symbol(name, SymbolKind::Builtin, span, false);
             self.scope_mut(ScopeId::from_raw(0)).define(name, id);
-            if matches!(name, "print" | "assert") {
+            if matches!(name, "print" | "show" | "assert") {
                 self.map.functions.insert(name.to_string(), id);
             }
             if matches!(

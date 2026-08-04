@@ -10,6 +10,8 @@
 //!
 //! ```text
 //! foxa --version
+//! foxa show examples/hello.foxa
+//! foxa fn greet --params "name: String" --ret String
 //! foxa check examples/hello.foxa
 //! foxa lex examples/hello.foxa
 //! foxa parse examples/hello.foxa

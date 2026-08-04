@@ -36,6 +36,28 @@ pub enum Commands {
         /// Optional path to a `.foxa` file.
         path: Option<PathBuf>,
     },
+    /// Compile a `.foxa` file, run `main`, and print program output.
+    Show {
+        /// Path to a `.foxa` file.
+        path: PathBuf,
+    },
+    /// Scaffold a new Foxa `fn` into a `.foxa` source file.
+    Fn {
+        /// Function name (Foxa identifier).
+        name: String,
+        /// Parameter list, e.g. `a: Int, b: Int`.
+        #[arg(long, default_value = "")]
+        params: String,
+        /// Return type (omit for no `->` clause).
+        #[arg(long)]
+        ret: Option<String>,
+        /// Target `.foxa` file (created if missing). Defaults to `<name>.foxa`.
+        #[arg(long, short)]
+        file: Option<PathBuf>,
+        /// Body expression/statements (default placeholder).
+        #[arg(long)]
+        body: Option<String>,
+    },
     /// Run package tests.
     Test,
     /// Format Foxa sources.

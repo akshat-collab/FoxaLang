@@ -63,7 +63,7 @@ impl<'a> Interpreter<'a> {
     /// Calls a named function with arguments.
     pub fn call_named(&mut self, name: &str, args: &[Value]) -> Result<Value, InterpError> {
         match name {
-            "print" => return self.builtin_print(args),
+            "print" | "show" => return self.builtin_print(args),
             "assert" => return self.builtin_assert(args),
             "Some" if args.len() == 1 => {
                 return Ok(Value::Enum {
@@ -250,6 +250,7 @@ impl<'a> Interpreter<'a> {
                     }
                 } else if self.functions.contains_key(name)
                     || name == "print"
+                    || name == "show"
                     || name == "assert"
                     || name == "Some"
                     || name == "Ok"

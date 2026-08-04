@@ -15,7 +15,7 @@ type Value =
   | Value[]
   | { [key: string]: Value };
 
-const BUILTINS = new Set(['print', 'len', 'abs', 'min', 'max', 'sqrt', 'floor', 'ceil']);
+const BUILTINS = new Set(['print', 'show', 'len', 'abs', 'min', 'max', 'sqrt', 'floor', 'ceil']);
 
 function stripComments(src: string): string {
   return src
@@ -191,6 +191,7 @@ export function runFoxa(source: string): RunResult {
     const callBuiltin = (name: string, args: Value[]): Value => {
       switch (name) {
         case 'print':
+        case 'show':
           output.push(args.map(stringify).join(' '));
           return null;
         case 'len': {
