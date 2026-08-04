@@ -1,7 +1,7 @@
 .code-editor {
   display: grid;
   grid-template-columns: auto 1fr;
-  background: #0b0d11;
+  background: #fafafa;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
@@ -14,7 +14,7 @@
 
 .code-gutter {
   padding: 10px 8px 10px 10px;
-  background: #0e1016;
+  background: #f2f2f4;
   color: var(--faint);
   text-align: right;
   user-select: none;
@@ -72,21 +72,21 @@
 }
 
 .tok-kw {
-  color: #c792ea;
+  color: #9333ea;
 }
 .tok-type {
-  color: #82aaff;
+  color: #2563eb;
 }
 .tok-fn {
-  color: #82aaff;
+  color: #2563eb;
 }
 .tok-string {
-  color: #c3e88d;
+  color: #15803d;
 }
 .tok-comment {
-  color: #546e7a;
+  color: #9a9aa2;
   font-style: italic;
 }
 .tok-num {
-  color: #f78c6c;
+  color: #c2410c;
 }

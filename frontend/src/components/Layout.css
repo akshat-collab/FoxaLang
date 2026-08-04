@@ -68,7 +68,7 @@
 
 .appbar-link:hover {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(0, 0, 0, 0.035);
 }
 
 .appbar-link.active {

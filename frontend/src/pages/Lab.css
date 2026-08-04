@@ -53,7 +53,7 @@
 
 .nb-collapse:hover {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.045);
 }
 
 .nb-kind {
@@ -83,7 +83,7 @@
 
 .nb-md:focus {
   box-shadow: none;
-  background: rgba(61, 139, 253, 0.04);
+  background: var(--accent-dim);
 }
 
 .nb-cell .code-editor {
@@ -99,7 +99,7 @@
   padding: 4px var(--space-3);
   font-size: var(--fs-xs);
   color: var(--faint);
-  background: #0e1016;
+  background: #f2f2f4;
   border-bottom: 1px solid var(--border);
 }
 
@@ -160,7 +160,7 @@
 .lab-chart {
   width: 100%;
   height: auto;
-  background: #0b0d11;
+  background: #fafafa;
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }

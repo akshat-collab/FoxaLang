@@ -32,7 +32,7 @@
   height: auto;
   position: relative;
   z-index: 1;
-  filter: drop-shadow(0 0 18px rgba(62, 201, 214, 0.35)) drop-shadow(0 8px 28px rgba(0, 0, 0, 0.45));
+  filter: drop-shadow(0 0 18px rgba(216, 30, 44, 0.25)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.1));
   animation: logo-float 5.5s ease-in-out infinite;
 }
 
@@ -43,7 +43,7 @@
   top: 18%;
   left: 15%;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(62, 201, 214, 0.28), transparent 68%);
+  background: radial-gradient(ellipse at center, rgba(216, 30, 44, 0.16), transparent 68%);
   pointer-events: none;
   animation: glow-pulse 4s ease-in-out infinite;
   z-index: 0;
