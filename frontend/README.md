@@ -23,6 +23,21 @@ Open the URL Vite prints (usually http://localhost:5173).
 | `/help` | FAQ + cheatsheet |
 | `/feedback` | Feedback form (saved in localStorage) |
 
+## Deploy on Vercel
+
+Repo root has `vercel.json`. Import [akshat-collab/FoxaLang](https://github.com/akshat-collab/FoxaLang) in Vercel:
+
+1. **Root Directory:** leave empty (repo root), **or** set to `frontend` and use `frontend/vercel.json`.
+2. Framework: Vite (auto) / Output: `frontend/dist` when deploying from root.
+3. Redeploy after pushing `vercel.json`.
+
+SPA routes need the rewrite to `index.html` (already in `vercel.json`). Without it, `/learn` etc. return Vercel `404 NOT_FOUND`.
+
+```bash
+# from repo root
+npx vercel --prod
+```
+
 ## Deploy on Netlify
 
 Repo root includes `netlify.toml` (`base = frontend`, publish `dist`, SPA redirects).
