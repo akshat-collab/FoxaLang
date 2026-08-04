@@ -1,44 +1,43 @@
-import { NavLink, Outlet } from 'react-router-dom';
-import { Code2, BookOpen, FlaskConical, HelpCircle, MessageSquare, Home } from 'lucide-react';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import './Layout.css';
 
 const links = [
-  { to: '/', label: 'Home', icon: Home, end: true },
-  { to: '/learn', label: 'Learn', icon: BookOpen },
-  { to: '/compiler', label: 'Compiler', icon: Code2 },
-  { to: '/lab', label: 'ML Lab', icon: FlaskConical },
-  { to: '/help', label: 'Help', icon: HelpCircle },
-  { to: '/feedback', label: 'Feedback', icon: MessageSquare },
+  { to: '/compiler', label: 'Playground' },
+  { to: '/lab', label: 'Lab' },
+  { to: '/learn', label: 'Learn' },
+  { to: '/help', label: 'Help' },
+  { to: '/feedback', label: 'Feedback' },
 ];
 
 export function Layout() {
+  const { pathname } = useLocation();
+  const toolMode = pathname === '/compiler' || pathname === '/lab';
+
   return (
     <div className="app-shell">
-      <header className="topnav">
-        <div className="topnav-inner">
-          <NavLink to="/" className="brand" end>
-            <span className="brand-mark" aria-hidden />
-            <span className="brand-name">Foxa</span>
-          </NavLink>
-          <nav className="nav-links" aria-label="Primary">
-            {links.map(({ to, label, icon: Icon, end }) => (
-              <NavLink key={to} to={to} end={end} className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-                <Icon size={16} strokeWidth={2.2} />
-                <span>{label}</span>
-              </NavLink>
-            ))}
-          </nav>
+      <header className="appbar">
+        <NavLink to="/" className="brand" end>
+          <span className="brand-mark" aria-hidden>
+            Fx
+          </span>
+          <span className="brand-name">Foxa</span>
+        </NavLink>
+        <nav className="appbar-nav" aria-label="Primary">
+          {links.map(({ to, label }) => (
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) => (isActive ? 'appbar-link active' : 'appbar-link')}
+            >
+              {label}
+            </NavLink>
+          ))}
+        </nav>
+        <div className="appbar-meta mono" aria-hidden>
+          v0.1 · browser
         </div>
       </header>
-      <main className="main">
-        <Outlet />
-      </main>
-      <footer className="site-footer">
-        <div className="container footer-inner">
-          <span>Foxa · systems language playground</span>
-          <span className="footer-muted">Compiler + ML Lab run in your browser</span>
-        </div>
-      </footer>
+      <main className={toolMode ? 'main' : 'main main-padded'}>{<Outlet />}</main>
     </div>
   );
 }

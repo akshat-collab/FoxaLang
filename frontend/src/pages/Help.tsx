@@ -4,50 +4,42 @@ import './Help.css';
 const FAQS = [
   {
     q: 'How do I run Foxa code?',
-    a: 'Open Compiler, write or upload a .foxa file with fn main(), then press Run or Show. Show mirrors the CLI command foxa show and prints compile status plus program output.',
+    a: 'Open Playground, write or upload a .foxa file with fn main(), then Run or Show. Show mirrors foxa show on the CLI.',
   },
   {
     q: 'What is foxa show?',
-    a: 'On the CLI: foxa show path/to/file.foxa compiles the file, runs main, and prints output. In the playground, use the Show button for the same report.',
+    a: 'CLI: foxa show path/to/file.foxa compiles, runs main, and prints output. Playground Show button matches that report.',
   },
   {
-    q: 'How do I create a function with Foxa?',
-    a: 'Use Foxa fn syntax: fn name(params) -> Ret { ... }. CLI: foxa fn greet --params "name: String" --ret String. Playground: New fn button inserts a stub into the open .foxa file.',
+    q: 'How do I create a function?',
+    a: 'Use Foxa fn syntax: fn name(params) -> Ret { ... }. CLI: foxa fn … — Playground: New fn.',
   },
   {
-    q: 'What does the ML Lab do?',
-    a: 'Lab is a Colab-style notebook. Code cells run Foxa scripts. Train cells parse model/epochs/dataset settings and simulate a training loop with live loss and accuracy.',
+    q: 'What is ML Lab?',
+    a: 'Notebook cells for code and training. Each cell has its own run control and Out[n] panel.',
   },
   {
-    q: 'Can I upload my own files?',
-    a: 'Yes. On Compiler and Lab, use the upload dropzone for .foxa files. The compiler keeps multiple file tabs. You can also download the buffer as .foxa.',
-  },
-  {
-    q: 'Is this the native foxac compiler?',
-    a: 'The playground uses an in-browser Foxa checker/interpreter. The native Rust toolchain (foxa show / run / check / fn) still lives in this repo for local builds.',
-  },
-  {
-    q: 'Where should I start learning?',
-    a: 'Go to Learn for short lessons with runnable examples, then move to Compiler and Lab for longer work.',
+    q: 'File support?',
+    a: 'Upload .foxa tabs in Playground. Lab accepts .foxa / .md into new cells.',
   },
 ];
 
 export function Help() {
   return (
-    <div className="help container">
-      <header className="page-head anim-fade-up">
+    <div className="help">
+      <header className="help-head">
         <h1>Help</h1>
-        <p>Quick answers for the Foxa playground — compiler, lab, and learning path.</p>
+        <p>Playground, Lab, and CLI quick reference.</p>
       </header>
 
-      <div className="help-quick anim-fade-up anim-delay-1">
-        <Link to="/learn">Learn Foxa →</Link>
-        <Link to="/compiler">Online compiler →</Link>
-        <Link to="/lab">ML Lab →</Link>
-        <Link to="/feedback">Send feedback →</Link>
+      <div className="help-links">
+        <Link to="/learn">Learn</Link>
+        <Link to="/compiler">Playground</Link>
+        <Link to="/lab">Lab</Link>
+        <Link to="/feedback">Feedback</Link>
       </div>
 
-      <div className="faq-list anim-fade-up anim-delay-2">
+      <div className="faq-list">
         {FAQS.map((item) => (
           <details key={item.q} className="faq">
             <summary>{item.q}</summary>
@@ -56,20 +48,20 @@ export function Help() {
         ))}
       </div>
 
-      <section className="help-cheatsheet anim-fade-up anim-delay-3">
-        <h2>Language cheatsheet</h2>
-        <pre className="mono">{`fn main() { show("hi"); }
+      <section className="help-block">
+        <h2>Language</h2>
+        <pre className="console-body">{`fn main() { show("hi"); }
 fn add(a: Int, b: Int) -> Int { a + b }
 let mut x = 0;
-while x < 3 { x = x + 1; }
-for n in [1, 2] { show(n); }
-struct Point { x: Int, y: Int }
-match Some(1) { Some(v) => show(v), None => show(0) }`}</pre>
-        <h2 style={{ marginTop: '1.5rem' }}>CLI</h2>
-        <pre className="mono">{`foxa show examples/hello.foxa
+while x < 3 { x = x + 1; }`}</pre>
+      </section>
+
+      <section className="help-block">
+        <h2>CLI</h2>
+        <pre className="console-body">{`foxa show examples/hello.foxa
 foxa fn greet --params "name: String" --ret String --file main.foxa
-foxa run main.foxa
-foxa check main.foxa`}</pre>
+foxa check main.foxa
+foxa run main.foxa`}</pre>
       </section>
     </div>
   );

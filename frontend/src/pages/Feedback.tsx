@@ -1,5 +1,4 @@
 import { useState, type FormEvent } from 'react';
-import { Send, CheckCircle2 } from 'lucide-react';
 import './Feedback.css';
 
 type FormState = {
@@ -9,12 +8,7 @@ type FormState = {
   message: string;
 };
 
-const INITIAL: FormState = {
-  name: '',
-  email: '',
-  category: 'general',
-  message: '',
-};
+const INITIAL: FormState = { name: '', email: '', category: 'general', message: '' };
 
 export function Feedback() {
   const [form, setForm] = useState<FormState>(INITIAL);
@@ -24,14 +18,11 @@ export function Feedback() {
   const submit = (e: FormEvent) => {
     e.preventDefault();
     if (!form.message.trim() || form.message.trim().length < 8) {
-      setError('Please write at least a short message (8+ characters).');
+      setError('Message needs at least 8 characters.');
       return;
     }
     setError('');
-    const entry = {
-      ...form,
-      at: new Date().toISOString(),
-    };
+    const entry = { ...form, at: new Date().toISOString() };
     const prev = JSON.parse(localStorage.getItem('foxa-feedback') ?? '[]') as unknown[];
     localStorage.setItem('foxa-feedback', JSON.stringify([entry, ...prev].slice(0, 50)));
     setSent(true);
@@ -39,32 +30,26 @@ export function Feedback() {
   };
 
   return (
-    <div className="feedback container">
-      <header className="page-head anim-fade-up">
+    <div className="feedback">
+      <header className="feedback-head">
         <h1>Feedback</h1>
-        <p>Tell us what works, what breaks, and what you want next in the Foxa playground.</p>
+        <p>Stored locally in this browser — no backend.</p>
       </header>
 
       {sent ? (
-        <div className="thanks anim-fade-up">
-          <CheckCircle2 size={36} color="var(--mint)" />
-          <h2>Thanks — feedback saved locally</h2>
-          <p>Your note is stored in this browser so you can keep iterating without a backend.</p>
+        <div className="feedback-thanks">
+          <p className="ok-line mono">saved</p>
+          <p>Thanks. You can send another note anytime.</p>
           <button type="button" className="btn btn-primary" onClick={() => setSent(false)}>
             Send another
           </button>
         </div>
       ) : (
-        <form className="feedback-form anim-fade-up anim-delay-1" onSubmit={submit}>
-          <div className="form-row">
+        <form className="feedback-form" onSubmit={submit}>
+          <div className="feedback-row">
             <div className="field">
               <label htmlFor="name">Name</label>
-              <input
-                id="name"
-                value={form.name}
-                onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                placeholder="Optional"
-              />
+              <input id="name" value={form.name} onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))} />
             </div>
             <div className="field">
               <label htmlFor="email">Email</label>
@@ -73,7 +58,6 @@ export function Feedback() {
                 type="email"
                 value={form.email}
                 onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                placeholder="Optional"
               />
             </div>
           </div>
@@ -85,11 +69,11 @@ export function Feedback() {
               onChange={(e) => setForm((f) => ({ ...f, category: e.target.value }))}
             >
               <option value="general">General</option>
-              <option value="compiler">Compiler / interpreter</option>
+              <option value="compiler">Playground</option>
               <option value="lab">ML Lab</option>
-              <option value="learn">Learn section</option>
-              <option value="bug">Bug report</option>
-              <option value="idea">Feature idea</option>
+              <option value="learn">Learn</option>
+              <option value="bug">Bug</option>
+              <option value="idea">Idea</option>
             </select>
           </div>
           <div className="field">
@@ -98,13 +82,12 @@ export function Feedback() {
               id="message"
               value={form.message}
               onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-              placeholder="What should we improve?"
               required
             />
           </div>
-          {error && <p className="form-error">{error}</p>}
+          {error && <p className="feedback-error">{error}</p>}
           <button type="submit" className="btn btn-primary">
-            <Send size={16} /> Submit feedback
+            Submit
           </button>
         </form>
       )}
