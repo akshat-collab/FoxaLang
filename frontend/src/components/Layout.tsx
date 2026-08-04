@@ -17,10 +17,10 @@ export function Layout() {
     <div className="app-shell">
       <header className="appbar">
         <NavLink to="/" className="brand" end>
-          <span className="brand-mark" aria-hidden>
-            Fx
+          <img src="/foxalang-logo.jpg" alt="" className="brand-logo" width={22} height={12} />
+          <span className="brand-name">
+            foxa<span className="brand-lang">Lang</span>
           </span>
-          <span className="brand-name">Foxa</span>
         </NavLink>
         <nav className="appbar-nav" aria-label="Primary">
           {links.map(({ to, label }) => (

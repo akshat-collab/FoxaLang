@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
-  /* Color — restrained IDE slate + one blue accent */
+  /* Color — slate workspace + foxaLang cyan brand accent */
   --bg: #0f1115;
   --surface: #171a21;
   --panel: #1c212b;
@@ -11,9 +11,9 @@
   --text: #dce1ea;
   --muted: #8b93a7;
   --faint: #5c657a;
-  --accent: #3d8bfd;
-  --accent-dim: rgba(61, 139, 253, 0.14);
-  --accent-hover: #5ba0ff;
+  --accent: #3ec9d6;
+  --accent-dim: rgba(62, 201, 214, 0.14);
+  --accent-hover: #5ad7e2;
   --run: #e8a838;
   --run-dim: rgba(232, 168, 56, 0.16);
   --ok: #3dd68c;
@@ -153,7 +153,7 @@ pre,
 
 .btn-primary {
   background: var(--accent);
-  color: #061018;
+  color: #061418;
   border-color: var(--accent);
 }
 
@@ -174,7 +174,7 @@ pre,
 
 .btn-run {
   background: var(--accent);
-  color: #061018;
+  color: #061418;
   font-family: var(--font-mono);
   font-size: var(--fs-sm);
   font-weight: 600;

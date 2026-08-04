@@ -3,25 +3,81 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
+  gap: var(--space-6);
+  padding-bottom: var(--space-5);
 }
 
-.home-intro h1 {
-  font-size: var(--fs-2xl);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
+/* ——— Brand hero ——— */
+.home-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+  padding-top: var(--space-2);
 }
 
-.home-intro p {
+.home-logo-wrap {
+  position: relative;
+  width: min(560px, 100%);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #12151a;
+  box-shadow: 0 0 0 1px rgba(62, 201, 214, 0.08);
+}
+
+.home-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  animation: logo-breathe 5.5s ease-in-out infinite;
+}
+
+.home-logo-glow {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(ellipse at 50% 40%, rgba(62, 201, 214, 0.18), transparent 55%);
+  pointer-events: none;
+  animation: glow-pulse 4s ease-in-out infinite;
+  z-index: 0;
+}
+
+.home-tagline {
+  font-family: var(--font-mono);
+  font-size: var(--fs-md);
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.home-caret {
+  display: inline-block;
+  width: 7px;
+  height: 1.05em;
+  margin-left: 4px;
+  background: var(--accent);
+  animation: caret-blink 1.05s steps(1) infinite;
+  vertical-align: text-bottom;
+}
+
+.home-lead {
   color: var(--muted);
-  max-width: 62ch;
-  margin-bottom: var(--space-4);
+  max-width: 58ch;
   font-size: var(--fs-lg);
   line-height: var(--lh-tight);
 }
 
-.home-intro .mono {
+.home-lead strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.home-lead .mono {
   color: var(--text);
   font-size: 0.9em;
 }
@@ -29,9 +85,67 @@
 .home-links {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
 }
 
+/* ——— About ——— */
+.home-about {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  padding: var(--space-5);
+}
+
+.home-about h2 {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.home-about > p {
+  color: var(--muted);
+  max-width: 68ch;
+  margin-bottom: var(--space-4);
+  font-size: var(--fs-base);
+}
+
+.home-about .mono {
+  color: var(--text);
+}
+
+.home-pillars {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.home-pillars li {
+  background: var(--panel);
+  padding: var(--space-3) var(--space-4);
+}
+
+.home-pillars h3 {
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.home-pillars p {
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  line-height: var(--lh-tight);
+  margin: 0;
+}
+
+/* ——— Live embed ——— */
 .home-embed {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -55,12 +169,94 @@
   min-height: 220px;
 }
 
+/* ——— Entrance motion ——— */
+.home-anim {
+  animation: home-rise 0.55s var(--ease) both;
+}
+
+.home-anim-1 {
+  animation-delay: 0.05s;
+}
+.home-anim-2 {
+  animation-delay: 0.15s;
+}
+.home-anim-3 {
+  animation-delay: 0.25s;
+}
+.home-anim-4 {
+  animation-delay: 0.35s;
+}
+.home-anim-5 {
+  animation-delay: 0.45s;
+}
+.home-anim-6 {
+  animation-delay: 0.55s;
+}
+
+@keyframes home-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logo-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.012);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes caret-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
 @media (max-width: 720px) {
+  .home-pillars {
+    grid-template-columns: 1fr;
+  }
   .home-embed-grid {
     grid-template-columns: 1fr;
   }
   .home-embed .code-editor {
     border-right: none;
     border-bottom: 1px solid var(--border);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-anim,
+  .home-logo,
+  .home-logo-glow,
+  .home-caret {
+    animation: none !important;
+  }
+  .home-anim {
+    opacity: 1;
+    transform: none;
   }
 }
